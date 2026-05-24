@@ -1,0 +1,633 @@
+[
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 1,
+  "fields": {
+    "user": 2,
+    "jti": "4480d0b29376487d8d3d1ab774b01174",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc4MDEyMDExNSwiaWF0IjoxNzc5NTE1MzE1LCJqdGkiOiI0NDgwZDBiMjkzNzY0ODdkOGQzZDFhYjc3NGIwMTE3NCIsInVzZXJfaWQiOiIyIn0.XdE08UVM-KyHblc2Ulj-Yskn0QnjLB6oPgJcSmEfF68",
+    "created_at": "2026-05-23T05:48:35.695Z",
+    "expires_at": "2026-05-30T05:48:35Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 2,
+  "fields": {
+    "user": 2,
+    "jti": "5f818b65304040b289baf12d1e029b52",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc4MDEyMDExNiwiaWF0IjoxNzc5NTE1MzE2LCJqdGkiOiI1ZjgxOGI2NTMwNDA0MGIyODliYWYxMmQxZTAyOWI1MiIsInVzZXJfaWQiOiIyIn0.XkXX62L520__H7AtGFMqGewK_UnvHB9tV18zCN2nWQI",
+    "created_at": "2026-05-23T05:48:36.719Z",
+    "expires_at": "2026-05-30T05:48:36Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 3,
+  "fields": {
+    "user": 1,
+    "jti": "4583968ede8e4c4f88a1e22928b4ac07",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc4MDEyMDQwNCwiaWF0IjoxNzc5NTE1NjA0LCJqdGkiOiI0NTgzOTY4ZWRlOGU0YzRmODhhMWUyMjkyOGI0YWMwNyIsInVzZXJfaWQiOiIxIn0.J_5Dvj6zpeLzFjeOsOWmGUGYsnkPElpnfyB3WTNz1Rg",
+    "created_at": "2026-05-23T05:53:24.501Z",
+    "expires_at": "2026-05-30T05:53:24Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 4,
+  "fields": {
+    "user": 2,
+    "jti": "90a27492f8424314aa0dd638946cae88",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc4MDE5MDk0NywiaWF0IjoxNzc5NTg2MTQ3LCJqdGkiOiI5MGEyNzQ5MmY4NDI0MzE0YWEwZGQ2Mzg5NDZjYWU4OCIsInVzZXJfaWQiOiIyIn0.3G6TUuELccRg5RHFRqjuXMWKaFDZFeZlrB1zjSA6kBw",
+    "created_at": "2026-05-24T01:29:07.712Z",
+    "expires_at": "2026-05-31T01:29:07Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 5,
+  "fields": {
+    "user": 2,
+    "jti": "107a62e91b1a446399fb22299c210467",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc4MDE5MjY1NiwiaWF0IjoxNzc5NTg3ODU2LCJqdGkiOiIxMDdhNjJlOTFiMWE0NDYzOTlmYjIyMjk5YzIxMDQ2NyIsInVzZXJfaWQiOiIyIn0.J1_ZKg9FfEMATm5WNIvC5C0-eHj0wVv9nx2SaRPTe8o",
+    "created_at": "2026-05-24T01:57:36.062Z",
+    "expires_at": "2026-05-31T01:57:36Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 6,
+  "fields": {
+    "user": 1,
+    "jti": "42581f1140fd47018aed3580e3f8cca6",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc4MDE5Mjg3NywiaWF0IjoxNzc5NTg4MDc3LCJqdGkiOiI0MjU4MWYxMTQwZmQ0NzAxOGFlZDM1ODBlM2Y4Y2NhNiIsInVzZXJfaWQiOiIxIn0.8cUkrGbR1k5ia5ZUfwppEL1WusLP_rhFZ3GkT8yL9gQ",
+    "created_at": "2026-05-24T02:01:17.108Z",
+    "expires_at": "2026-05-31T02:01:17Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 7,
+  "fields": {
+    "user": 2,
+    "jti": "83edce707ecc4f42b68cabe27f743099",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc4MDE5MzA0NiwiaWF0IjoxNzc5NTg4MjQ2LCJqdGkiOiI4M2VkY2U3MDdlY2M0ZjQyYjY4Y2FiZTI3Zjc0MzA5OSIsInVzZXJfaWQiOiIyIn0.Bh7y16FuOJsgoW31zUm5WN2FmcfgbWbZbD85ZmuKZ_0",
+    "created_at": "2026-05-24T02:04:06.151Z",
+    "expires_at": "2026-05-31T02:04:06Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 8,
+  "fields": {
+    "user": 2,
+    "jti": "afede2f661ea402d92c1d8327de3eeb7",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc4MDE5MzA2MCwiaWF0IjoxNzc5NTg4MjYwLCJqdGkiOiJhZmVkZTJmNjYxZWE0MDJkOTJjMWQ4MzI3ZGUzZWViNyIsInVzZXJfaWQiOiIyIn0.vNqxCIezLrijQCjHO67reNZNTmWeWa6lo3-2UG7nKyQ",
+    "created_at": "2026-05-24T02:04:20.659Z",
+    "expires_at": "2026-05-31T02:04:20Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 9,
+  "fields": {
+    "user": 2,
+    "jti": "524dcbc5fe724a0aa21d6dcdc508d4c7",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc4MDE5Mzc0OCwiaWF0IjoxNzc5NTg4OTQ4LCJqdGkiOiI1MjRkY2JjNWZlNzI0YTBhYTIxZDZkY2RjNTA4ZDRjNyIsInVzZXJfaWQiOiIyIn0.OvortBBK0EcI5nDqMJ0tDy2Fe6ZFb7JdZCBAO8F-uVo",
+    "created_at": "2026-05-24T02:15:48.885Z",
+    "expires_at": "2026-05-31T02:15:48Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 10,
+  "fields": {
+    "user": 2,
+    "jti": "fb67fc94f65447c3a1010446708975b8",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc4MDE5NDE4MiwiaWF0IjoxNzc5NTg5MzgyLCJqdGkiOiJmYjY3ZmM5NGY2NTQ0N2MzYTEwMTA0NDY3MDg5NzViOCIsInVzZXJfaWQiOiIyIn0.-OIYgm_FuXtCAZhbyTC_1gCx4UdcVPW9ZKbW_9b3jaA",
+    "created_at": "2026-05-24T02:23:02.720Z",
+    "expires_at": "2026-05-31T02:23:02Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 11,
+  "fields": {
+    "user": 3,
+    "jti": "6d94528d3360425d8a0cb35d06530d3e",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc4MDE5NDI1NywiaWF0IjoxNzc5NTg5NDU3LCJqdGkiOiI2ZDk0NTI4ZDMzNjA0MjVkOGEwY2IzNWQwNjUzMGQzZSIsInVzZXJfaWQiOiIzIn0.lpF_VQSo3vESV2dZ53eoxDoGb71QCenkmocMvtK5bXQ",
+    "created_at": "2026-05-24T02:24:17.603Z",
+    "expires_at": "2026-05-31T02:24:17Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 12,
+  "fields": {
+    "user": 3,
+    "jti": "34542990ad1e4fea95fde5a42f45767d",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc4MDE5NDI3OSwiaWF0IjoxNzc5NTg5NDc5LCJqdGkiOiIzNDU0Mjk5MGFkMWU0ZmVhOTVmZGU1YTQyZjQ1NzY3ZCIsInVzZXJfaWQiOiIzIn0.vihxpPI2s9BKhj3atUr4KhGewKbphwF2Mwmi4nFb56E",
+    "created_at": "2026-05-24T02:24:39.524Z",
+    "expires_at": "2026-05-31T02:24:39Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 13,
+  "fields": {
+    "user": 3,
+    "jti": "2fed6fc3339c4d828dee0c2296ee2c60",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc4MDE5NDQwMSwiaWF0IjoxNzc5NTg5NjAxLCJqdGkiOiIyZmVkNmZjMzMzOWM0ZDgyOGRlZTBjMjI5NmVlMmM2MCIsInVzZXJfaWQiOiIzIn0.FSnoLl4WN4rU0xuxyitKaKg7HwV4Tm6W1iFgJjVLmi0",
+    "created_at": "2026-05-24T02:26:41.165Z",
+    "expires_at": "2026-05-31T02:26:41Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 14,
+  "fields": {
+    "user": 2,
+    "jti": "42d32a8920654be099492efed00f45e8",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc4MDE5NDUwOSwiaWF0IjoxNzc5NTg5NzA5LCJqdGkiOiI0MmQzMmE4OTIwNjU0YmUwOTk0OTJlZmVkMDBmNDVlOCIsInVzZXJfaWQiOiIyIn0.WbgSWuN9mBzYoo8uzszTkUhfaNqMDx97bgqtFYSNXO4",
+    "created_at": "2026-05-24T02:28:29.595Z",
+    "expires_at": "2026-05-31T02:28:29Z"
+  }
+},
+{
+  "model": "token_blacklist.outstandingtoken",
+  "pk": 15,
+  "fields": {
+    "user": 3,
+    "jti": "01e6174b9cac418c8c27f6db83b6c362",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc4MDE5NDg1MSwiaWF0IjoxNzc5NTkwMDUxLCJqdGkiOiIwMWU2MTc0YjljYWM0MThjOGMyN2Y2ZGI4M2I2YzM2MiIsInVzZXJfaWQiOiIzIn0.H-NG1IYlmR5VY36Mr6DHKWbmK1_8iuc242yxc_3d0Hs",
+    "created_at": "2026-05-24T02:34:11.202Z",
+    "expires_at": "2026-05-31T02:34:11Z"
+  }
+},
+{
+  "model": "token_blacklist.blacklistedtoken",
+  "pk": 1,
+  "fields": {
+    "token": 3,
+    "blacklisted_at": "2026-05-23T05:53:48.851Z"
+  }
+},
+{
+  "model": "token_blacklist.blacklistedtoken",
+  "pk": 2,
+  "fields": {
+    "token": 6,
+    "blacklisted_at": "2026-05-24T02:15:28.381Z"
+  }
+},
+{
+  "model": "token_blacklist.blacklistedtoken",
+  "pk": 3,
+  "fields": {
+    "token": 9,
+    "blacklisted_at": "2026-05-24T02:22:13.134Z"
+  }
+},
+{
+  "model": "token_blacklist.blacklistedtoken",
+  "pk": 4,
+  "fields": {
+    "token": 5,
+    "blacklisted_at": "2026-05-24T02:22:22.001Z"
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$62EugT73Fp6wUbuJ5Qkoeh$B8qqAVJsXMoy0rJHrILluBO7oXy/bVPRgBQJyYZh3WI=",
+    "last_login": "2026-05-24T01:08:31.715Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-05-23T05:48:18.029Z",
+    "email": "admin@example.com",
+    "phone": null,
+    "age": 30,
+    "gender": "male",
+    "is_vip": true,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$jehyIYolRfanEFIo2fZKvT$cOoNfXULNABy9KwfvO9gGeaa/I6csw5Fp4TGXZkGE+8=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "testuser",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-05-23T05:48:18.296Z",
+    "email": "test@example.com",
+    "phone": null,
+    "age": 25,
+    "gender": "female",
+    "is_vip": false,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$Kb8hrzJ2yshhaQyBqIOXvi$IMuNkDG/nC/ozoJYfbWEW8z6xQYAKLnoajSpVSDTO1s=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "addr_test",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-05-24T02:24:17.328Z",
+    "email": "addr_test@example.com",
+    "phone": null,
+    "age": null,
+    "gender": "",
+    "is_vip": false,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.address",
+  "pk": "1b36e7b3-d936-47a9-b663-0758398201ef",
+  "fields": {
+    "created_at": "2026-05-24T02:24:17.617Z",
+    "updated_at": "2026-05-24T02:24:17.617Z",
+    "user": 3,
+    "recipient_name": "王小明",
+    "phone": "13912345678",
+    "address_line1": "天河区体育东路100号1203室",
+    "address_line2": "",
+    "city": "广州市",
+    "state": "广东省",
+    "postal_code": "510620",
+    "country": "中国",
+    "is_default": false
+  }
+},
+{
+  "model": "accounts.address",
+  "pk": "56dba034-5f3a-4bd9-9728-c561d7e0dcbb",
+  "fields": {
+    "created_at": "2026-05-24T02:04:20.676Z",
+    "updated_at": "2026-05-24T02:04:20.676Z",
+    "user": 2,
+    "recipient_name": "张三",
+    "phone": "13800138000",
+    "address_line1": "天河区体育东路100号",
+    "address_line2": "",
+    "city": "广州市",
+    "state": "广东省",
+    "postal_code": "510000",
+    "country": "中国",
+    "is_default": true
+  }
+},
+{
+  "model": "accounts.address",
+  "pk": "63cdd9e5-ca7d-46e3-ad70-0c0d17c2481b",
+  "fields": {
+    "created_at": "2026-05-24T02:24:39.540Z",
+    "updated_at": "2026-05-24T02:24:39.540Z",
+    "user": 3,
+    "recipient_name": "王小明",
+    "phone": "13912345678",
+    "address_line1": "体育东路100号",
+    "address_line2": "",
+    "city": "广州市",
+    "state": "广东省",
+    "postal_code": "510620",
+    "country": "中国",
+    "is_default": true
+  }
+},
+{
+  "model": "accounts.address",
+  "pk": "71503e6f-1de5-48d3-92d5-ca31cf6a4817",
+  "fields": {
+    "created_at": "2026-05-24T02:24:39.552Z",
+    "updated_at": "2026-05-24T02:24:39.552Z",
+    "user": 3,
+    "recipient_name": "李四",
+    "phone": "13800001111",
+    "address_line1": "中关村大街1号",
+    "address_line2": "",
+    "city": "海淀区",
+    "state": "北京市",
+    "postal_code": "100080",
+    "country": "中国",
+    "is_default": false
+  }
+},
+{
+  "model": "accounts.address",
+  "pk": "c9a4e50e-727c-4170-964a-b94158c172e7",
+  "fields": {
+    "created_at": "2026-05-23T05:48:18.630Z",
+    "updated_at": "2026-05-23T05:48:18.630Z",
+    "user": 2,
+    "recipient_name": "张三",
+    "phone": "13800138000",
+    "address_line1": "天河区体育东路100号",
+    "address_line2": "",
+    "city": "广州市",
+    "state": "广东省",
+    "postal_code": "510000",
+    "country": "中国",
+    "is_default": false
+  }
+},
+{
+  "model": "products.category",
+  "pk": "3c99e4ee-fbf6-497f-93a1-fc22c8476afd",
+  "fields": {
+    "created_at": "2026-05-23T05:48:18.588Z",
+    "updated_at": "2026-05-23T05:48:18.588Z",
+    "name": "服装",
+    "parent": null,
+    "lft": 1,
+    "rght": 6,
+    "tree_id": 1,
+    "level": 0
+  }
+},
+{
+  "model": "products.category",
+  "pk": "4ec23f05-afe2-4521-9961-0cab4ff15334",
+  "fields": {
+    "created_at": "2026-05-23T05:48:18.608Z",
+    "updated_at": "2026-05-23T05:48:18.608Z",
+    "name": "食品",
+    "parent": null,
+    "lft": 1,
+    "rght": 2,
+    "tree_id": 3,
+    "level": 0
+  }
+},
+{
+  "model": "products.category",
+  "pk": "84d5836a-1356-438c-b1b3-158195a5feb6",
+  "fields": {
+    "created_at": "2026-05-23T05:48:18.563Z",
+    "updated_at": "2026-05-23T05:48:18.563Z",
+    "name": "电子产品",
+    "parent": null,
+    "lft": 1,
+    "rght": 6,
+    "tree_id": 2,
+    "level": 0
+  }
+},
+{
+  "model": "products.category",
+  "pk": "8c4ab94a-2ebd-4998-a65e-7cf4e5a22f0b",
+  "fields": {
+    "created_at": "2026-05-23T05:48:18.604Z",
+    "updated_at": "2026-05-23T05:48:18.604Z",
+    "name": "女装",
+    "parent": "3c99e4ee-fbf6-497f-93a1-fc22c8476afd",
+    "lft": 2,
+    "rght": 3,
+    "tree_id": 1,
+    "level": 1
+  }
+},
+{
+  "model": "products.category",
+  "pk": "d633d3cd-d1e5-483d-a896-d48551f3b477",
+  "fields": {
+    "created_at": "2026-05-23T05:48:18.571Z",
+    "updated_at": "2026-05-23T05:48:18.571Z",
+    "name": "手机",
+    "parent": "84d5836a-1356-438c-b1b3-158195a5feb6",
+    "lft": 2,
+    "rght": 3,
+    "tree_id": 2,
+    "level": 1
+  }
+},
+{
+  "model": "products.category",
+  "pk": "d6b901ab-f291-4d06-93a6-439a1728029d",
+  "fields": {
+    "created_at": "2026-05-23T05:48:18.596Z",
+    "updated_at": "2026-05-23T05:48:18.596Z",
+    "name": "男装",
+    "parent": "3c99e4ee-fbf6-497f-93a1-fc22c8476afd",
+    "lft": 4,
+    "rght": 5,
+    "tree_id": 1,
+    "level": 1
+  }
+},
+{
+  "model": "products.category",
+  "pk": "e92d3ead-e35f-44f7-9522-f30f447cd5d6",
+  "fields": {
+    "created_at": "2026-05-23T05:48:18.580Z",
+    "updated_at": "2026-05-23T05:48:18.580Z",
+    "name": "电脑",
+    "parent": "84d5836a-1356-438c-b1b3-158195a5feb6",
+    "lft": 4,
+    "rght": 5,
+    "tree_id": 2,
+    "level": 1
+  }
+},
+{
+  "model": "products.product",
+  "pk": "0d4dc8dd-330e-41c8-b1a1-fe3a12ed13ca",
+  "fields": {
+    "created_at": "2026-05-23T05:48:18.616Z",
+    "updated_at": "2026-05-23T05:48:18.616Z",
+    "name": "MacBook Pro 14",
+    "description": "Apple MacBook Pro M3芯片",
+    "price": "12999.00",
+    "stock": 50,
+    "category": "e92d3ead-e35f-44f7-9522-f30f447cd5d6"
+  }
+},
+{
+  "model": "products.product",
+  "pk": "69029796-120b-4027-b858-ffc95e74fe63",
+  "fields": {
+    "created_at": "2026-05-23T05:48:18.613Z",
+    "updated_at": "2026-05-23T05:48:18.613Z",
+    "name": "iPhone 15",
+    "description": "Apple iPhone 15 256GB",
+    "price": "5999.00",
+    "stock": 100,
+    "category": "d633d3cd-d1e5-483d-a896-d48551f3b477"
+  }
+},
+{
+  "model": "products.product",
+  "pk": "712225e7-5f9c-483e-b7ce-87eb24b06d7f",
+  "fields": {
+    "created_at": "2026-05-23T05:48:18.626Z",
+    "updated_at": "2026-05-23T05:48:18.626Z",
+    "name": "有机坚果礼盒",
+    "description": "每日坚果混合装 30包",
+    "price": "128.00",
+    "stock": 296,
+    "category": "4ec23f05-afe2-4521-9961-0cab4ff15334"
+  }
+},
+{
+  "model": "products.product",
+  "pk": "acb20dc9-284d-4d85-b363-fb5eb90d249e",
+  "fields": {
+    "created_at": "2026-05-23T05:48:18.622Z",
+    "updated_at": "2026-05-23T05:48:18.622Z",
+    "name": "女士连衣裙",
+    "description": "夏季新款碎花连衣裙",
+    "price": "299.00",
+    "stock": 198,
+    "category": "8c4ab94a-2ebd-4998-a65e-7cf4e5a22f0b"
+  }
+},
+{
+  "model": "products.product",
+  "pk": "b95038d3-059e-4c29-8c72-20ed73802f78",
+  "fields": {
+    "created_at": "2026-05-23T05:48:18.619Z",
+    "updated_at": "2026-05-23T05:48:18.619Z",
+    "name": "男士休闲T恤",
+    "description": "纯棉圆领短袖T恤",
+    "price": "99.00",
+    "stock": 500,
+    "category": "d6b901ab-f291-4d06-93a6-439a1728029d"
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": "1ef187c2-32d1-4449-8b4d-10c1e45a9a96",
+  "fields": {
+    "created_at": "2026-05-24T02:34:11.215Z",
+    "updated_at": "2026-05-24T02:34:11.215Z",
+    "user": 3
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": "2dec3c75-ac90-4768-bc58-9b819112bd16",
+  "fields": {
+    "created_at": "2026-05-24T01:29:27.681Z",
+    "updated_at": "2026-05-24T01:29:27.682Z",
+    "user": 2
+  }
+},
+{
+  "model": "cart.cart",
+  "pk": "c0562259-3187-49ea-891f-3dae44df7fa1",
+  "fields": {
+    "created_at": "2026-05-23T05:53:35.570Z",
+    "updated_at": "2026-05-23T05:53:35.570Z",
+    "user": 1
+  }
+},
+{
+  "model": "orders.order",
+  "pk": "3cffc028-c94e-43d7-907e-ca9a3de5734a",
+  "fields": {
+    "created_at": "2026-05-24T02:34:11.267Z",
+    "updated_at": "2026-05-24T02:34:11.267Z",
+    "user": 3,
+    "total_amount": "256.00",
+    "discount_amount": "0.00",
+    "coupon": null
+  }
+},
+{
+  "model": "orders.order",
+  "pk": "e221c621-487b-46a5-ab49-267fcc36f088",
+  "fields": {
+    "created_at": "2026-05-24T02:36:28.840Z",
+    "updated_at": "2026-05-24T02:36:28.840Z",
+    "user": 2,
+    "total_amount": "854.00",
+    "discount_amount": "0.00",
+    "coupon": null
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": "1d824c3c-1416-450f-afad-96a4f2f1f49b",
+  "fields": {
+    "created_at": "2026-05-24T02:34:11.268Z",
+    "updated_at": "2026-05-24T02:34:11.268Z",
+    "order": "3cffc028-c94e-43d7-907e-ca9a3de5734a",
+    "product": "712225e7-5f9c-483e-b7ce-87eb24b06d7f",
+    "quantity": 2,
+    "price": "128.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": "ac4a4f78-5279-4a98-acb5-dbdb56d14150",
+  "fields": {
+    "created_at": "2026-05-24T02:36:28.843Z",
+    "updated_at": "2026-05-24T02:36:28.843Z",
+    "order": "e221c621-487b-46a5-ab49-267fcc36f088",
+    "product": "712225e7-5f9c-483e-b7ce-87eb24b06d7f",
+    "quantity": 2,
+    "price": "128.00"
+  }
+},
+{
+  "model": "orders.orderitem",
+  "pk": "f1d2c5e3-5dc8-404b-882e-ab9394a63f07",
+  "fields": {
+    "created_at": "2026-05-24T02:36:28.842Z",
+    "updated_at": "2026-05-24T02:36:28.842Z",
+    "order": "e221c621-487b-46a5-ab49-267fcc36f088",
+    "product": "acb20dc9-284d-4d85-b363-fb5eb90d249e",
+    "quantity": 2,
+    "price": "299.00"
+  }
+},
+{
+  "model": "coupons.coupon",
+  "pk": "8a81c7f1-20a0-41f6-a28b-f6a01c697e64",
+  "fields": {
+    "created_at": "2026-05-23T05:48:18.647Z",
+    "updated_at": "2026-05-23T05:48:18.647Z",
+    "type": "discount",
+    "discount_value": "10.00",
+    "min_order_amount": "0.00",
+    "start_time": "2025-12-31T16:00:00Z",
+    "end_time": "2026-12-31T15:59:00Z",
+    "status": "unused"
+  }
+},
+{
+  "model": "coupons.coupon",
+  "pk": "c97c6592-9271-4022-8a0f-1acae16ba7bc",
+  "fields": {
+    "created_at": "2026-05-23T05:48:18.633Z",
+    "updated_at": "2026-05-23T05:48:18.633Z",
+    "type": "full_reduction",
+    "discount_value": "20.00",
+    "min_order_amount": "100.00",
+    "start_time": "2025-12-31T16:00:00Z",
+    "end_time": "2026-12-31T15:59:00Z",
+    "status": "unused"
+  }
+}
+]

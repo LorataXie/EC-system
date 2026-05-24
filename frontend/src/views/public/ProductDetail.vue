@@ -1,0 +1,126 @@
+<template>
+  <div class="product-detail" v-loading="loading">
+    <div class="detail-layout" v-if="product">
+      <div class="gallery">
+        <img v-if="product.image" :src="product.image" class="main-image" />
+        <div v-else class="main-image-placeholder">
+          <el-icon :size="60"><Picture /></el-icon>
+        </div>
+      </div>
+      <div class="info">
+        <h1 class="name">{{ product.name }}</h1>
+        <div class="price-box">
+          <span class="price">{{ formatPrice(product.price) }}</span>
+        </div>
+        <div class="meta-row">
+          <span>库存：{{ product.stock }}</span>
+        </div>
+        <div class="actions">
+          <el-input-number v-model="quantity" :min="1" :max="product.stock" />
+          <el-button type="primary" size="large" @click="addToCart">加入购物车</el-button>
+          <el-button type="danger" size="large" @click="buyNow">立即购买</el-button>
+        </div>
+      </div>
+    </div>
+    <div class="description-section" v-if="product">
+      <h3>商品详情</h3>
+      <div class="description" v-html="product.description"></div>
+    </div>
+    <div class="reviews-section" v-if="product">
+      <h3>用户评价 ({{ reviews.length }})</h3>
+      <div v-if="reviews.length === 0" class="no-reviews">暂无评价</div>
+      <div v-for="rv in reviews" :key="rv.id" class="review-card">
+        <div class="review-header">
+          <span class="reviewer">{{ rv.user_name }}</span>
+          <el-rate :model-value="rv.rating" disabled show-score size="small" />
+          <span class="review-date">{{ formatDate(rv.created_at) }}</span>
+        </div>
+        <p class="review-text">{{ rv.comment }}</p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import { useProductStore } from '@/stores/product'
+import { useCartStore } from '@/stores/cart'
+import { useAuthStore } from '@/stores/auth'
+import { formatPrice, formatDate } from '@/utils/format'
+import { ElMessage } from 'element-plus'
+import request from '@/api/request'
+
+const route = useRoute()
+const router = useRouter()
+const productStore = useProductStore()
+const cartStore = useCartStore()
+const authStore = useAuthStore()
+const product = ref(null)
+const reviews = ref([])
+const loading = ref(true)
+const quantity = ref(1)
+
+onMounted(async () => {
+  const [productData, reviewData] = await Promise.all([
+    productStore.fetchProduct(route.params.id),
+    request.get('/reviews', { params: { product_id: route.params.id } }).then(r => r.data?.results || r.data || []).catch(() => []),
+  ])
+  if (productData) product.value = productData
+  reviews.value = reviewData
+  loading.value = false
+})
+
+async function addToCart() {
+  if (!product.value) return
+  if (!authStore.isAuthenticated) {
+    ElMessage.warning('请先登录')
+    router.push({ name: 'Login', query: { redirect: route.fullPath } })
+    return
+  }
+  try {
+    await cartStore.add(product.value.id, quantity.value)
+    ElMessage.success(`已将 ${quantity.value} 件 ${product.value.name} 加入购物车`)
+  } catch (e) {
+    const msg = e?.response?.data?.detail || e?.response?.data?.data?.detail || e?.message || '添加失败，请重试'
+    ElMessage.error(typeof msg === 'string' ? msg : '添加失败，请重试')
+  }
+}
+
+async function buyNow() {
+  if (!authStore.isAuthenticated) {
+    ElMessage.warning('请先登录')
+    router.push({ name: 'Login', query: { redirect: route.fullPath } })
+    return
+  }
+  await addToCart()
+  router.push('/cart')
+}
+</script>
+
+<style scoped>
+.product-detail { max-width: 1000px; margin: 0 auto; }
+.detail-layout { margin-bottom: 32px; display: flex; gap: 32px; }
+.gallery { width: 400px; flex-shrink: 0; }
+.main-image { width: 100%; max-height: 400px; object-fit: cover; border-radius: 8px; }
+.main-image-placeholder { width: 100%; height: 300px; display: flex; align-items: center; justify-content: center; background: #f5f7fa; border-radius: 8px; color: #ccc; }
+.info { flex: 1; }
+.name { font-size: 22px; margin-bottom: 8px; }
+.brand { color: #666; margin-bottom: 12px; }
+.price-box { background: #fef0f0; padding: 16px; border-radius: 8px; margin-bottom: 16px; }
+.price { color: #e4393c; font-size: 28px; font-weight: 700; }
+.meta-row { display: flex; gap: 24px; color: #666; font-size: 14px; margin-bottom: 20px; }
+.actions { display: flex; gap: 12px; align-items: center; }
+.description-section { background: #fff; padding: 24px; border-radius: 8px; }
+.description-section h3 { margin-bottom: 16px; }
+.description { color: #666; line-height: 1.8; }
+.reviews-section { background: #fff; padding: 24px; border-radius: 8px; margin-top: 16px; }
+.reviews-section h3 { margin-bottom: 16px; }
+.no-reviews { color: #999; text-align: center; padding: 24px; }
+.review-card { border-bottom: 1px solid #f0f0f0; padding: 14px 0; }
+.review-card:last-child { border-bottom: none; }
+.review-header { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+.reviewer { font-weight: 600; color: #333; }
+.review-date { color: #999; font-size: 12px; margin-left: auto; }
+.review-text { color: #555; font-size: 14px; line-height: 1.6; }
+</style>
