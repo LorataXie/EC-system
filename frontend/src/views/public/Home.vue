@@ -1,6 +1,5 @@
 <template>
   <div class="home-page">
-    <!-- 🔔 新增：消息轮播通告栏（不影响你原有任何代码） -->
     <div class="notice-bar">
       <el-carousel
           direction="vertical"
@@ -58,7 +57,6 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-/* 原有样式保留，只增强美化 + 消息轮播 */
 .home-page {
   max-width: 1200px;
   margin: 0 auto;
