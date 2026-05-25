@@ -57,7 +57,8 @@ async function handleSave(data) {
     formVisible.value = false
     await fetchAddresses()
   } catch (e) {
-    ElMessage.error('保存失败')
+    const msg = e?.response?.data?.data?.detail || e?.response?.data?.data?.address_line1?.[0] || '保存失败'
+    ElMessage.error(typeof msg === 'string' ? msg : '保存失败')
   }
 }
 

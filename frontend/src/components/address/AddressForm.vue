@@ -104,20 +104,23 @@ function hideTips() {
 function selectTip(tip) {
   const parts = (tip.district||'').split('-').filter(Boolean)
   form.region = parts.length >= 2 ? [parts[0], parts[1]] : parts
-  form.address_line1 = tip.address || tip.name || ''
+  // Nominatim display_name 可能很长（>255），只用 POI 名称 + 前200字符
+  const addr = (tip.address || tip.name || '')
+  form.address_line1 = addr.length > 200 ? addr.substring(0, 200) : addr
   mapSearch.value = ''; mapTips.value = []
 }
 
-function handleSubmit() {
-  formRef.value.validate(valid => {
-    if (!valid) return
-    const [state, city] = form.region
-    emit('save', {
-      recipient_name: form.recipient_name, phone: form.phone,
-      country: '中国', state: state||'', city: city||'',
-      address_line1: form.address_line1, address_line2: form.address_line2,
-      postal_code: form.postal_code, is_default: form.is_default,
-    })
+async function handleSubmit() {
+  try {
+    await formRef.value.validate()
+  } catch { return }
+  const state = form.region[0] || ''
+  const city = form.region[1] || state
+  emit('save', {
+    recipient_name: form.recipient_name, phone: form.phone,
+    country: '中国', state, city,
+    address_line1: form.address_line1, address_line2: form.address_line2,
+    postal_code: form.postal_code, is_default: form.is_default,
   })
 }
 </script>

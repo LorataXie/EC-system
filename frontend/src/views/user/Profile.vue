@@ -27,16 +27,27 @@
       <el-form-item>
         <el-button type="primary" :loading="saving" @click="handleSave">保存修改</el-button>
       </el-form-item>
+      <el-divider />
+      <el-form-item>
+        <el-popconfirm title="注销后所有数据将被删除且无法恢复，确定注销？" @confirm="handleDeleteAccount">
+          <template #reference>
+            <el-button type="danger" plain>注销账户</el-button>
+          </template>
+        </el-popconfirm>
+      </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script setup>
 import { reactive, onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
 import { getProfile, updateUser } from '@/api/auth'
 import { ElMessage } from 'element-plus'
+import request from '@/api/request'
 
+const router = useRouter()
 const authStore = useAuthStore()
 const saving = ref(false)
 
@@ -74,6 +85,15 @@ async function handleSave() {
   } finally {
     saving.value = false
   }
+}
+
+async function handleDeleteAccount() {
+  try {
+    await request.post('/profile/delete-account')
+    authStore.logout()
+    ElMessage.success('账户已注销')
+    router.push('/')
+  } catch(e) { ElMessage.error('注销失败') }
 }
 </script>
 

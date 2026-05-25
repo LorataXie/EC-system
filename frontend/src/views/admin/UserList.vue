@@ -36,6 +36,11 @@
           <el-button size="small" :type="row.is_active ? 'danger' : 'success'" @click="toggleUser(row)">
             {{ row.is_active ? '禁用' : '启用' }}
           </el-button>
+          <el-popconfirm title="确定删除该用户及其所有关联数据？" @confirm="deleteUser(row)">
+            <template #reference>
+              <el-button size="small" type="danger">删除</el-button>
+            </template>
+          </el-popconfirm>
         </template>
       </el-table-column>
     </el-table>
@@ -79,6 +84,14 @@ async function toggleVip(user) {
     ElMessage.success(user.is_vip ? '已取消VIP' : '已设为VIP')
     loadUsers()
   } catch (e) { ElMessage.error('操作失败') }
+}
+
+async function deleteUser(user) {
+  try {
+    await request.delete(`/admin/users/${user.id}`)
+    ElMessage.success('用户已删除')
+    loadUsers()
+  } catch(e) { ElMessage.error('删除失败') }
 }
 </script>
 
