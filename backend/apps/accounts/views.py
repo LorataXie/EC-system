@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from django.contrib.auth import get_user_model
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
-from .models import Address
+from .models import Address, OperationLog
 from .serializers import (
     RegisterSerializer, LoginSerializer, UserSerializer,
     AddressSerializer, ChangePasswordSerializer, SendCodeSerializer, SendSmsCodeSerializer,
@@ -121,6 +121,7 @@ class AuthViewSet(viewsets.GenericViewSet):
         serializer.is_valid(raise_exception=True)
         request.user.set_password(serializer.validated_data['new_password'])
         request.user.save()
+        OperationLog.objects.create(user=request.user, action='修改密码')
         return Response({'detail': '密码修改成功'})
 
     # ======== Password reset ========
@@ -186,29 +187,34 @@ class AddressViewSet(viewsets.ModelViewSet):
 
     @action(methods=['get'], detail=False, url_path='search', permission_classes=[permissions.IsAuthenticated])
     def search_place(self, request):
-        """代理高德地图POI搜索"""
+        """代理地址搜索 — Nominatim OpenStreetMap"""
         keywords = request.query_params.get('keywords', '')
-        if not keywords:
+        if not keywords or len(keywords) < 1:
             return Response([])
 
-        key = 'efb252f9c97e90648513ddff306b5226'
-        url = f'https://restapi.amap.com/v3/assistant/inputtips?key={key}&keywords={urllib.parse.quote(keywords)}&datatype=all'
+        url = (
+            'https://nominatim.openstreetmap.org/search'
+            f'?q={urllib.parse.quote(keywords)}&format=json&limit=8&addressdetails=1&accept-language=zh'
+        )
+        req = urllib.request.Request(url, headers={'User-Agent': 'ECShop/1.0'})
         try:
-            with urllib.request.urlopen(url, timeout=5) as resp:
+            with urllib.request.urlopen(req, timeout=5) as resp:
                 data = json.loads(resp.read())
-                if data.get('status') == '1':
-                    results = []
-                    for tip in data.get('tips', []):
-                        if tip.get('location'):
-                            results.append({
-                                'name': tip['name'],
-                                'district': tip.get('district', ''),
-                                'address': tip.get('address', ''),
-                            })
-                    return Response(results[:8])
-        except Exception:
-            pass
-        return Response([])
+                results = []
+                for item in data[:8]:
+                    addr = item.get('address', {})
+                    district_parts = []
+                    if addr.get('state'): district_parts.append(addr['state'])
+                    if addr.get('city'): district_parts.append(addr['city'])
+                    if addr.get('county'): district_parts.append(addr['county'])
+                    results.append({
+                        'name': item.get('display_name', '').split(',')[0],
+                        'district': '-'.join(district_parts) if district_parts else '',
+                        'address': item.get('display_name', ''),
+                    })
+                return Response(results)
+        except Exception as e:
+            return Response([])
 
     @action(methods=['post'], detail=True)
     def set_default(self, request, pk=None):
@@ -243,11 +249,24 @@ class AdminUserViewSet(viewsets.GenericViewSet):
     def partial_update(self, request, pk=None):
         user = self.queryset.get(id=pk)
         allowed_fields = ['is_active', 'is_staff', 'is_vip']
+        changed = []
         for field in allowed_fields:
             if field in request.data:
+                old_val = getattr(user, field)
                 setattr(user, field, request.data[field])
+                changed.append(f'{field}: {old_val} -> {request.data[field]}')
         user.save(update_fields=[f for f in allowed_fields if f in request.data])
+        if changed:
+            OperationLog.objects.create(user=user, action='管理员修改', detail='; '.join(changed))
         return Response(UserSerializer(user).data)
+
+    @action(methods=['get'], detail=True, url_path='logs')
+    def user_logs(self, request, pk=None):
+        logs = OperationLog.objects.filter(user_id=pk)[:50]
+        return Response([{
+            'action': l.action, 'detail': l.detail,
+            'created_at': l.created_at.isoformat(),
+        } for l in logs])
 
     @action(methods=['get'], detail=False, url_path='filter-targets')
     def filter_targets(self, request):

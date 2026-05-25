@@ -15,6 +15,8 @@ class Order(BaseModel):
                  ('delivered', '已送达'), ('completed', '已完成'), ('cancelled', '已取消')])
     tracking_number = models.CharField(max_length=100, blank=True, default='', verbose_name='物流单号')
     shipping_method = models.CharField(max_length=50, blank=True, default='', verbose_name='配送方式')
+    refund_status = models.CharField(max_length=20, blank=True, default='', verbose_name='退款状态',
+        choices=[('', '无'), ('requested', '申请中'), ('approved', '已同意'), ('rejected', '已拒绝'), ('refunded', '已退款')])
 
     class Meta:
         db_table = 'orders_order'

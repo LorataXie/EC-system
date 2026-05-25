@@ -9,7 +9,7 @@
       </el-form-item>
       <el-form-item label="搜索地址">
         <div class="search-wrapper">
-          <el-input v-model="mapSearch" placeholder="输入地址关键词，如：北京邮电、万达..." @input="onSearch" clearable />
+          <el-input v-model="mapSearch" placeholder="输入地址关键词，如：北京邮电、万达..." @input="onSearch" clearable @blur="hideTips" />
           <div v-if="mapTips.length" class="search-dropdown">
             <div v-for="t in mapTips" :key="t.id||t.name" class="search-item" @click="selectTip(t)">
               <div class="tip-name">{{ t.name }}</div>
@@ -50,7 +50,6 @@ const emit = defineEmits(['close', 'save'])
 const formRef = ref(null)
 const mapSearch = ref('')
 const mapTips = ref([])
-let amapAC = null
 let searchTimer = null
 
 const form = reactive({
@@ -83,44 +82,29 @@ watch(() => props.visible, (val) => {
     })
     mapSearch.value = ''; mapTips.value = []
   } else { resetForm() }
-  // Ensure AMap is loaded
-  ensureAMap()
 })
 
-function ensureAMap() {
-  if (window.AMap) { initAutocomplete(); return }
-  // Already loading?
-  if (document.querySelector('script[src*="webapi.amap.com"]')) return
-  const script = document.createElement('script')
-  script.src = 'https://webapi.amap.com/maps?v=2.0&key=efb252f9c97e90648513ddff306b5226&plugin=AMap.Autocomplete'
-  script.onload = () => initAutocomplete()
-  document.head.appendChild(script)
-}
-
-function initAutocomplete() {
-  if (amapAC) return
-  window.AMap.plugin('AMap.Autocomplete', () => {
-    amapAC = new window.AMap.Autocomplete({ city: '', citylimit: false })
-  })
-}
+import request from '@/api/request'
 
 function onSearch(val) {
   if (searchTimer) clearTimeout(searchTimer)
   if (!val || val.length < 1) { mapTips.value = []; return }
-  searchTimer = setTimeout(() => {
-    if (!amapAC) { mapTips.value = []; return }
-    amapAC.search(val, (status, result) => {
-      if (status === 'complete' && result.tips) {
-        mapTips.value = result.tips.filter(t => t.location).slice(0, 8)
-      } else { mapTips.value = [] }
-    })
+  searchTimer = setTimeout(async () => {
+    try {
+      const res = await request.get('/addresses/search', { params: { keywords: val } })
+      mapTips.value = (res.data || []).slice(0, 8)
+    } catch(e) { mapTips.value = [] }
   }, 300)
 }
 
+function hideTips() {
+  setTimeout(() => { mapTips.value = [] }, 200)
+}
+
 function selectTip(tip) {
-  const parts = (tip.district||'').split('-')
-  form.region = parts.length >= 2 ? [parts[0], parts[1]] : [tip.district].filter(Boolean)
-  form.address_line1 = (tip.name||'') + (tip.address||'')
+  const parts = (tip.district||'').split('-').filter(Boolean)
+  form.region = parts.length >= 2 ? [parts[0], parts[1]] : parts
+  form.address_line1 = tip.address || tip.name || ''
   mapSearch.value = ''; mapTips.value = []
 }
 

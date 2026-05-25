@@ -12,10 +12,12 @@
           </el-tag>
         </template>
       </el-table-column>
+      <el-table-column label="消费总额" width="100">
+        <template #default="{row}">{{ formatPrice(row.total_spent||0) }}</template>
+      </el-table-column>
       <el-table-column label="VIP" width="80">
         <template #default="{ row }">
-          <el-tag v-if="row.is_vip" type="warning" size="small">VIP</el-tag>
-          <span v-else>-</span>
+          <el-switch :model-value="row.is_vip" @change="toggleVip(row)" size="small" />
         </template>
       </el-table-column>
       <el-table-column label="状态" width="100">
@@ -42,7 +44,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { formatDateTime } from '@/utils/format'
+import { formatPrice, formatDateTime } from '@/utils/format'
 import request from '@/api/request'
 import { ElMessage } from 'element-plus'
 
@@ -68,9 +70,15 @@ async function toggleUser(user) {
     await request.patch(`/admin/users/${user.id}`, { is_active: !user.is_active })
     ElMessage.success(user.is_active ? '已禁用' : '已启用')
     loadUsers()
-  } catch (e) {
-    ElMessage.error('操作失败')
-  }
+  } catch (e) { ElMessage.error('操作失败') }
+}
+
+async function toggleVip(user) {
+  try {
+    await request.patch(`/admin/users/${user.id}`, { is_vip: !user.is_vip })
+    ElMessage.success(user.is_vip ? '已取消VIP' : '已设为VIP')
+    loadUsers()
+  } catch (e) { ElMessage.error('操作失败') }
 }
 </script>
 

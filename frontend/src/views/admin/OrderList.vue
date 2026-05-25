@@ -34,6 +34,11 @@
       <el-table-column label="时间" width="100">
         <template #default="{row}">{{ formatDate(row.created_at) }}</template>
       </el-table-column>
+      <el-table-column label="操作" width="80">
+        <template #default="{row}">
+          <el-button v-if="row.status==='delivered'" size="small" type="success" @click="doComplete(row.id)">完成</el-button>
+        </template>
+      </el-table-column>
     </el-table>
 
   </div>
@@ -47,7 +52,16 @@ import request from '@/api/request'
 
 const orders = ref([]); const loading = ref(false)
 const userFilter = ref(''); const dateRange = ref([]); const statusFilter = ref('')
+import { ElMessage } from 'element-plus'
+
 onMounted(() => loadOrders())
+
+async function doComplete(oid) {
+  try {
+    await request.post(`/admin/orders/${oid}/complete`)
+    ElMessage.success('已标记为完成'); loadOrders()
+  } catch(e) { ElMessage.error('操作失败') }
+}
 
 async function loadOrders() {
   loading.value = true

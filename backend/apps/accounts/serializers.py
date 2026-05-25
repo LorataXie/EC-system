@@ -50,10 +50,18 @@ class LoginSerializer(serializers.Serializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
+    total_spent = serializers.SerializerMethodField()
+
     class Meta:
         model = User
-        fields = ['id', 'email', 'username', 'phone', 'age', 'gender', 'is_vip', 'is_staff', 'date_joined']
-        read_only_fields = ['id', 'email', 'date_joined']
+        fields = ['id', 'email', 'username', 'phone', 'age', 'gender', 'is_vip', 'is_staff', 'is_active', 'total_spent', 'date_joined']
+        read_only_fields = ['id', 'email', 'date_joined', 'total_spent']
+
+    def get_total_spent(self, obj):
+        from django.db.models import Sum
+        from apps.orders.models import Order
+        total = Order.objects.filter(user=obj).aggregate(s=Sum('total_amount'))['s']
+        return float(total) if total else 0.00
 
 
 class AddressSerializer(serializers.ModelSerializer):

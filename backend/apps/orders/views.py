@@ -102,6 +102,13 @@ class OrderViewSet(viewsets.GenericViewSet):
         order.save(update_fields=['status'])
         return Response({'detail': '已确认收货'})
 
+    @action(methods=['post'], detail=True, url_path='refund')
+    def request_refund(self, request, pk=None):
+        order = get_object_or_404(Order, pk=pk, user=request.user, status__in=['paid', 'shipped'])
+        order.refund_status = 'requested'
+        order.save(update_fields=['refund_status'])
+        return Response({'detail': '退款申请已提交'})
+
 
 class OrderAdminViewSet(viewsets.GenericViewSet):
     permission_classes = [permissions.IsAuthenticated, IsAdminUser]
@@ -142,6 +149,28 @@ class OrderAdminViewSet(viewsets.GenericViewSet):
         from .services import cancel_expired_orders
         count = cancel_expired_orders(minutes)
         return Response({'detail': f'已取消 {count} 笔超时订单'})
+
+    @action(methods=['post'], detail=True, url_path='process-refund')
+    def process_refund(self, request, pk=None):
+        order = get_object_or_404(self.queryset, pk=pk, refund_status='requested')
+        action = request.data.get('action')
+        if action == 'approve':
+            order.refund_status = 'refunded'
+            order.status = 'cancelled'
+            for item in order.items.all():
+                item.product.stock += item.quantity
+                item.product.save(update_fields=['stock'])
+        elif action == 'reject':
+            order.refund_status = 'rejected'
+        order.save(update_fields=['refund_status', 'status'])
+        return Response({'detail': '已处理'})
+
+    @action(methods=['post'], detail=True, url_path='complete')
+    def complete_order(self, request, pk=None):
+        order = get_object_or_404(self.queryset, pk=pk, status='delivered')
+        order.status = 'completed'
+        order.save(update_fields=['status'])
+        return Response({'detail': '已标记为完成'})
     permission_classes = [permissions.IsAuthenticated, IsAdminUser]
     queryset = Order.objects.all().select_related('user', 'coupon').prefetch_related('items__product')
 

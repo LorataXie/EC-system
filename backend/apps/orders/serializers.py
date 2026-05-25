@@ -22,7 +22,7 @@ class OrderListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Order
-        fields = ['id', 'status', 'total_amount', 'discount_amount', 'coupon', 'address_snapshot', 'tracking_number', 'shipping_method', 'items', 'created_at']
+        fields = ['id', 'status', 'refund_status', 'total_amount', 'discount_amount', 'coupon', 'address_snapshot', 'tracking_number', 'shipping_method', 'items', 'created_at']
 
 
 class OrderDetailSerializer(serializers.ModelSerializer):
