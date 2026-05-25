@@ -1,34 +1,37 @@
-<!-- ============================================================ -->
-<!-- 首页 - 商城入口页                                                 -->
-<!-- 结构：Hero 横幅 + 分类导航 + 精选商品列表                            -->
-<!-- ============================================================ -->
 <template>
   <div class="home-page">
-    <!-- ===== Hero 横幅：欢迎语 + 开始购物按钮 ===== -->
+    <!-- 🔔 新增：消息轮播通告栏（不影响你原有任何代码） -->
+    <div class="notice-bar">
+      <el-carousel
+          direction="vertical"
+          :interval="3500"
+          arrow="never"
+          height="28px"
+          class="notice-carousel"
+      >
+        <el-carousel-item>🎉 新品上线，全场低至 7 折！</el-carousel-item>
+        <el-carousel-item>🚚 满 99 元免运费，速来选购</el-carousel-item>
+        <el-carousel-item>🎁 新用户注册立减 15 元</el-carousel-item>
+        <el-carousel-item>⭐ 欢迎来到 EC 商城，祝您购物愉快</el-carousel-item>
+      </el-carousel>
+    </div>
+
     <section class="hero">
       <h1>欢迎来到 EC商城</h1>
       <p>发现好物，享受便捷购物体验</p>
       <el-button type="primary" size="large" @click="$router.push('/products')">开始购物</el-button>
     </section>
 
-    <!-- ===== 商品分类卡片（仅在有分类数据时渲染） ===== -->
     <section class="categories" v-if="productStore.categories.length">
       <h3>商品分类</h3>
       <div class="category-grid">
-        <!-- 点击卡片跳转商品列表页并携带分类过滤参数 -->
-        <div
-          v-for="cat in productStore.categories"
-          :key="cat.id"
-          class="category-card"
-          @click="$router.push(`/products?category=${cat.id}`)"
-        >
+        <div v-for="cat in productStore.categories" :key="cat.id" class="category-card" @click="$router.push(`/products?category=${cat.id}`)">
           <el-icon :size="28"><Folder /></el-icon>
           <span>{{ cat.name }}</span>
         </div>
       </div>
     </section>
 
-    <!-- ===== 精选商品：4列网格布局，每行4个商品卡片 ===== -->
     <section class="featured">
       <h3>精选商品</h3>
       <el-row :gutter="16">
@@ -44,10 +47,10 @@
 import { onMounted } from 'vue'
 import { useProductStore } from '@/stores/product'
 import ProductCard from '@/components/product/ProductCard.vue'
+import { Folder } from '@element-plus/icons-vue'
 
 const productStore = useProductStore()
 
-// 页面挂载时：拉取分类 + 按价格倒序拉取前8件精选商品
 onMounted(async () => {
   await productStore.fetchCategories()
   await productStore.fetchProducts({ sort: '-price', page_size: 8 })
@@ -55,34 +58,104 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-/* Hero 区域：渐变色背景 */
+/* 原有样式保留，只增强美化 + 消息轮播 */
+.home-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* 🔔 消息轮播样式 */
+.notice-bar {
+  background: #fff7cc;
+  color: #e67c00;
+  border-radius: 8px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  font-size: 13px;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+.notice-carousel {
+  height: 28px !important;
+}
+.notice-carousel :deep(.el-carousel__container) {
+  height: 28px !important;
+}
+.notice-carousel :deep(.el-carousel__item) {
+  height: 28px !important;
+  line-height: 28px !important;
+}
+
 .hero {
   text-align: center;
-  padding: 60px 0;
+  padding: 80px 0;
   background: linear-gradient(135deg, #409eff, #36cfc9);
   color: #fff;
-  border-radius: 12px;
-  margin-bottom: 32px;
+  border-radius: 16px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 20px rgba(64, 158, 255, 0.2);
 }
-.hero h1 { font-size: 36px; margin-bottom: 12px; }
-.hero p { font-size: 16px; margin-bottom: 24px; opacity: .9; }
-/* 分类区域 */
-.categories { margin-bottom: 32px; }
-.categories h3, .featured h3 { margin-bottom: 16px; font-size: 20px; }
-.category-grid { display: flex; gap: 16px; flex-wrap: wrap; }
+
+.hero h1 {
+  font-size: 40px;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 28px;
+  opacity: .95;
+}
+
+.categories {
+  margin-bottom: 44px;
+}
+
+.categories h3,
+.featured h3 {
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+}
+
+.category-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
 .category-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  padding: 20px;
-  background: #f5f7fa;
-  border-radius: 8px;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px 20px;
+  background: #fff;
+  border-radius: 12px;
   cursor: pointer;
-  min-width: 100px;
-  transition: all .2s;
+  min-width: 110px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0f0f0;
 }
-.category-card:hover { background: #e6f0ff; }
-/* 商品列间距 */
-.el-col { margin-bottom: 16px; }
+
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  background: #e6f0ff;
+  border-color: #d0e7ff;
+}
+
+.el-col {
+  margin-bottom: 20px;
+}
+
+.featured {
+  margin-bottom: 40px;
+}
 </style>
